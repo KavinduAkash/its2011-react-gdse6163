@@ -4,7 +4,14 @@ import Header from "./components/layout/header";
 import Footer from "./components/layout/footer";
 import Home from "./views/home";
 
-class App extends React.Component<any, any> {
+interface Props {
+}
+
+interface State {
+  count: number
+}
+
+class App extends React.Component<Props, State> {
 
   state = {
     count: 0
@@ -18,7 +25,7 @@ class App extends React.Component<any, any> {
     return (
       <div>
 
-        <Header/>
+        {/*<Header/>*/}
 
         {/*<Home/>*/}
 
@@ -28,7 +35,12 @@ class App extends React.Component<any, any> {
           <button className={'bg-green-600 text-white p-5'} onClick={this.up}>Click</button>
         </div>
 
-        <Footer/>
+        {
+          this.state.count > 0 ? null : <Card title={"hi"} content={"hhhhhhhhhhhhhhhhhhhh"}/>
+        }
+
+
+        {/*<Footer/>*/}
 
       </div>
     );
