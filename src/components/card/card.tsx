@@ -49,7 +49,7 @@ class Card extends React.Component<Props, any> {
       <div className={'w-72 p-5 border-solid border-2 m-5'}>
         <h1 className={'text-2xl font-bold'}>{this.props.title}</h1>
         <p className={'my-5'}>{this.props.content}</p>
-        <button className={'bg-green-600 p-2 text-white'}>Read More...</button>
+        <button className={'main-btn'}>Read More...</button>
       </div>
     );
   }

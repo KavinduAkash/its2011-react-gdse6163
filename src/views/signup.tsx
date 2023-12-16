@@ -57,7 +57,7 @@ class Signup extends React.Component<any, any> {
           </div>
 
           <div className={'text-center mt-5'}>
-            <button className={'bg-green-600 text-white px-5 py-3 hover:bg-green-400'}>Sign Up</button>
+            <button className={'main-btn'}>Sign Up</button>
           </div>
 
           <div className={'text-center mt-5'}>

@@ -1,17 +1,35 @@
 import React from 'react';
+import Input from "./../components/input/input";
+import * as ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
 class Editor extends React.Component<any, any> {
 
+  state = {
+    value: ""
+  }
+
   render(): React.ReactElement<any, string | React.JSXElementConstructor<any>> | string | number | Iterable<React.ReactNode> | React.ReactPortal | boolean | any | null | undefined {
     return(
-      <div>
+      <section className={'px-28'}>
 
-        <div className={'m-2'}>
-          <label htmlFor="title" className={'block'}>Title<span className="text-red-600">*</span></label>
-          <input type="text" id="title" placeholder="Title" className={'block border border-green-300 outline-none focus:border-green-600 h-10 w-full'}/>
+        <div className={'text-right mt-5'}>
+          <button className={'second-btn mr-1'}>Clear</button>
+          <button className={'main-btn ml-1'}>Publish</button>
         </div>
 
-      </div>
+        <Input
+          type={'text'}
+          name={'title'}
+          label={'Title'}
+          placeholder={'Enter the title'}
+          optional={false}/>
+
+          <div className={'m-2'}>
+            <ReactQuill theme="snow" value={this.state.value} onChange={(e) => this.setState({value: e.target.value})} />
+          </div>
+
+      </section>
     );
   }
 

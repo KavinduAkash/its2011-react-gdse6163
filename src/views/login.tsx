@@ -34,7 +34,7 @@ class Login extends React.Component<any, any> {
           </div>
 
           <div className={'text-center mt-5'}>
-            <button className={'bg-green-600 text-white px-5 py-3 hover:bg-green-400'}>Sign In</button>
+            <button className={'main-btn'}>Sign In</button>
           </div>
 
           <div className={'text-center mt-5'}>
