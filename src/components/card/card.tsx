@@ -1,8 +1,8 @@
 import React from 'react';
 
 interface Props {
-  title?: string,
-  content?: string
+  title: string,
+  content: string
 }
 
 class Card extends React.Component<Props, any> {
