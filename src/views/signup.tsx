@@ -1,9 +1,7 @@
-import React from 'react';
 import { Link } from "react-router-dom";
 import Input from "./../components/input/input";
 
-class Signup extends React.Component<any, any> {
-  render(): React.ReactElement<any, string | React.JSXElementConstructor<any>> | string | number | Iterable<React.ReactNode> | React.ReactPortal | boolean | any | null | undefined {
+function Signup(): JSX.Element {
     return(
       <section className={'flex justify-center items-center p-5'}>
         <div className={'w-fit p-10 border shadow-xl rounded-xl'}>
@@ -67,7 +65,6 @@ class Signup extends React.Component<any, any> {
         </div>
       </section>
     );
-  }
 }
 
 export default Signup;
