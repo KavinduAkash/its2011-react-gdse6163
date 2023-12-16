@@ -1,9 +1,10 @@
 import React from 'react';
-import Card from "./components/card/card";
 import Header from "./components/layout/header";
 import Footer from "./components/layout/footer";
 import Home from "./views/home";
 import Login from "./views/login";
+import Signup from "./views/signup";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 interface Props {
 }
@@ -17,15 +18,15 @@ class App extends React.Component<Props, State> {
   render(): React.ReactElement<any, string | React.JSXElementConstructor<any>> | string | number | Iterable<React.ReactNode> | React.ReactPortal | boolean | any | null | undefined {
     return (
       <div>
-
-        <Header/>
-
-        {/*<Home/>*/}
-
-        <Login/>
-
-        <Footer/>
-
+        <BrowserRouter>
+          <Header/>
+          <Routes>
+            <Route path={"/"} element={<Home/>}/>
+            <Route path={"/signin"} element={<Login/>}/>
+            <Route path={"/signup"} element={<Signup/>}/>
+          </Routes>
+          <Footer/>
+        </BrowserRouter>
       </div>
     );
   }

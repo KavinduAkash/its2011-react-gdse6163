@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 class Login extends React.Component<any, any> {
 
@@ -27,6 +28,10 @@ class Login extends React.Component<any, any> {
 
           <div className={'text-center mt-5'}>
             <button className={'bg-green-600 text-white px-5 py-3 hover:bg-green-400'}>Sign In</button>
+          </div>
+
+          <div className={'text-center mt-5'}>
+            Do not have an account? <Link to={'/signup'}><span className={'text-blue-600 underline'}>Sign up now</span></Link>
           </div>
 
         </div>
