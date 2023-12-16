@@ -5,6 +5,7 @@ import Home from "./views/home";
 import Login from "./views/login";
 import Signup from "./views/signup";
 import Editor from "./views/editor";
+import MyArticles from "./views/my-articles";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 interface Props {
@@ -26,6 +27,7 @@ class App extends React.Component<Props, State> {
             <Route path={"/signin"} element={<Login/>}/>
             <Route path={"/signup"} element={<Signup/>}/>
             <Route path={"/editor"} element={<Editor/>}/>
+            <Route path={"/my-articles"} element={<MyArticles/>}/>
           </Routes>
           <Footer/>
         </BrowserRouter>

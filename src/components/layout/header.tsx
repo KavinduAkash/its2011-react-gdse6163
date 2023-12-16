@@ -10,7 +10,7 @@ class Header extends React.Component<any, any> {
           <img src="https://logodix.com/logo/1597040.png" title="logo" alt="logo" className={'w-[50px]'}/>
           <ul className={'flex gap-[4vw]'}>
             <li><Link to={'/'}>Articles</Link></li>
-            <li>Your Articles</li>
+            <li><Link to={'/my-articles'}>My Articles</Link></li>
             <li><Link to={'/editor'}>Write New Article</Link></li>
             <li><Link to={'/signin'}>Create An Account / Login</Link></li>
           </ul>
