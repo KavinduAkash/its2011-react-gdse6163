@@ -1,42 +1,70 @@
 import React from 'react';
+import Card from "./components/card/card";
+import Header from "./components/layout/header";
+import Footer from "./components/layout/footer";
 
-class App extends React.Component<any, any>{
+const data = [
+  {
+    id: 1,
+    title: "IJSE",
+    content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. A impedit ipsa quae tenetur totam. Ad architecto asperiores culpa cupiditate doloremque, dolores minima numquam perferendis quaerat, quasi sequi similique tempore voluptas."
+  },
+  {
+    id: 2,
+    title: "GDSE",
+    content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. A impedit ipsa quae tenetur totam. Ad architecto asperiores culpa cupiditate doloremque, dolores minima numquam perferendis quaerat, quasi sequi similique tempore voluptas."
+  },
+  {
+    id: 3,
+    title: "Javascript",
+    content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. A impedit ipsa quae tenetur totam. Ad architecto asperiores culpa cupiditate doloremque, dolores minima numquam perferendis quaerat, quasi sequi similique tempore voluptas."
+  },
+  {
+    id: 4,
+    title: "Typescript",
+    content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. A impedit ipsa quae tenetur totam. Ad architecto asperiores culpa cupiditate doloremque, dolores minima numquam perferendis quaerat, quasi sequi similique tempore voluptas."
+  },
+  {
+    id: 5,
+    title: "Java",
+    content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. A impedit ipsa quae tenetur totam. Ad architecto asperiores culpa cupiditate doloremque, dolores minima numquam perferendis quaerat, quasi sequi similique tempore voluptas."
+  },
+  {
+    id: 6,
+    title: "Go",
+    content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. A impedit ipsa quae tenetur totam. Ad architecto asperiores culpa cupiditate doloremque, dolores minima numquam perferendis quaerat, quasi sequi similique tempore voluptas."
+  },
+];
 
-  state = {
-    count: 0,
-    visible: true
-  };
+const arr = [1, 2, 3, "A", "B", 4]
 
-  // up = (): void => {
-  //   this.setState({count: this.state.count + 1});
-  // }
-  //
-  // down = (): void => {
-  //   this.setState({count: this.state.count - 1});
-  // }
+class App extends React.Component<any, any> {
 
-  update = (type: string): void => {
-    switch (type) {
-      case 'UP':
-        this.setState({count: this.state.count + 1});
-        break;
-      default:
-        this.setState({count: this.state.count - 1});
-        break;
-    }
+  render(): React.ReactElement<any, string | React.JSXElementConstructor<any>> | string | number | Iterable<React.ReactNode> | React.ReactPortal | boolean | any | null | undefined {
+    return (
+      <div>
+
+        <Header/>
+
+        <section>
+          <div
+            className={'grid 2xl:grid-cols-5 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 w-fit relative m-auto'}>
+
+            {
+              data.map((r, index) => {
+                return <Card title={r.title} content={r.content}/>
+              })
+            }
+
+          </div>
+        </section>
+
+        <Footer/>
+
+      </div>
+    );
   }
 
-  render() {
-   return(
-     <div className="m-5">
-
-       <button className="inline bg-green-600 px-5" onClick={() => this.update('UP')}>+</button>
-       <div className="inline mx-5 font-bold">{this.state.count}</div>
-       <button className="inline bg-red-600 px-5" onClick={() => this.update('DOWN')}>-</button>
-
-     </div>
-   );
-  }
 }
 
 export default App
