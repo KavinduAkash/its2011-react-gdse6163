@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from "react-router-dom";
+import Input from "./../components/input/input";
 
 class Signup extends React.Component<any, any> {
   render(): React.ReactElement<any, string | React.JSXElementConstructor<any>> | string | number | Iterable<React.ReactNode> | React.ReactPortal | boolean | any | null | undefined {
@@ -17,32 +18,42 @@ class Signup extends React.Component<any, any> {
 
             <div className={'flex'}>
 
-              <div className={'m-2'}>
-                <label htmlFor="fname" className={'block'}>First Name<span className="text-red-600">*</span></label>
-                <input type="text" id="fname" placeholder="First Name" className={'block border border-green-300 outline-none focus:border-green-600 h-10 w-full'}/>
-              </div>
+              <Input
+                type={'text'}
+                name={'fname'}
+                label={'First Name'}
+                placeholder={'Enter your first name'}
+                optional={false}/>
 
-              <div className={'m-2'}>
-                <label htmlFor="lname" className={'block'}>Last Name<span className="text-red-600">*</span></label>
-                <input type="text" id="lname" placeholder="Last Name" className={'block border border-green-300 outline-none focus:border-green-600 h-10 w-full'}/>
-              </div>
+              <Input
+                type={'text'}
+                name={'lname'}
+                label={'Last Name'}
+                placeholder={'Enter your last name'}
+                optional={false}/>
 
             </div>
 
-            <div className={'m-2'}>
-              <label htmlFor="username" className={'block'}>Username<span className="text-red-600">*</span></label>
-              <input type="text" id="username" placeholder="Username" className={'block border border-green-300 outline-none focus:border-green-600 h-10 w-full'}/>
-            </div>
+            <Input
+              type={'text'}
+              name={'username'}
+              label={'Username'}
+              placeholder={'Enter your username'}
+              optional={false}/>
 
-            <div className={'m-2'}>
-              <label htmlFor="email" className={'block'}>Email<span className="text-red-600">*</span></label>
-              <input type="email" id="email" placeholder="Email" className={'block border border-green-300 outline-none focus:border-green-600 h-10 w-full'}/>
-            </div>
+            <Input
+              type={'email'}
+              name={'email'}
+              label={'Email'}
+              placeholder={'Enter your email'}
+              optional={false}/>
 
-            <div className={'m-2'}>
-              <label htmlFor="password" className={'block'}>Password<span className="text-red-600">*</span></label>
-              <input type="password" id="password" placeholder="Password" className={'block border border-green-300 outline-none focus:border-green-600 h-10  w-full'}/>
-            </div>
+            <Input
+              type={'password'}
+              name={'password'}
+              label={'Password'}
+              placeholder={'Enter your password'}
+              optional={false}/>
           </div>
 
           <div className={'text-center mt-5'}>
