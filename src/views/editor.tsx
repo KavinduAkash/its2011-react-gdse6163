@@ -9,6 +9,11 @@ class Editor extends React.Component<any, any> {
     value: ""
   }
 
+  handleEditor = (html): void => {
+    console.log(html);
+    this.setState({value: html})
+  }
+
   render(): React.ReactElement<any, string | React.JSXElementConstructor<any>> | string | number | Iterable<React.ReactNode> | React.ReactPortal | boolean | any | null | undefined {
     return(
       <section className={'px-28'}>
@@ -26,7 +31,7 @@ class Editor extends React.Component<any, any> {
           optional={false}/>
 
           <div className={'m-2'}>
-            <ReactQuill theme="snow" value={this.state.value} onChange={(e) => this.setState({value: e.target.value})} />
+            <ReactQuill theme="snow" value={this.state.value} onChange={this.handleEditor} />
           </div>
 
       </section>

@@ -6,6 +6,7 @@ import Login from "./views/login";
 import Signup from "./views/signup";
 import Editor from "./views/editor";
 import MyArticles from "./views/my-articles";
+import Article from "./views/article";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 interface Props {
@@ -28,6 +29,7 @@ class App extends React.Component<Props, State> {
             <Route path={"/signup"} element={<Signup/>}/>
             <Route path={"/editor"} element={<Editor/>}/>
             <Route path={"/my-articles"} element={<MyArticles/>}/>
+            <Route path={"/article"} element={<Article/>}/>
           </Routes>
           <Footer/>
         </BrowserRouter>
