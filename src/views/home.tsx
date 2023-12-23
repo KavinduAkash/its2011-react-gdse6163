@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Card from "./../components/card/card";
 import axios from "axios";
 
@@ -8,50 +8,14 @@ interface Data {
   body: string
 }
 
-// const data: Data[] = [
-//   {
-//     id: 1,
-//     title: "IJSE",
-//     content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. A impedit ipsa quae tenetur totam. Ad architecto asperiores culpa cupiditate doloremque, dolores minima numquam perferendis quaerat, quasi sequi similique tempore voluptas."
-//   },
-//   {
-//     id: 2,
-//     title: "GDSE",
-//     content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. A impedit ipsa quae tenetur totam. Ad architecto asperiores culpa cupiditate doloremque, dolores minima numquam perferendis quaerat, quasi sequi similique tempore voluptas."
-//   },
-//   {
-//     id: 3,
-//     title: "Javascript",
-//     content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. A impedit ipsa quae tenetur totam. Ad architecto asperiores culpa cupiditate doloremque, dolores minima numquam perferendis quaerat, quasi sequi similique tempore voluptas."
-//   },
-//   {
-//     id: 4,
-//     title: "Typescript",
-//     content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. A impedit ipsa quae tenetur totam. Ad architecto asperiores culpa cupiditate doloremque, dolores minima numquam perferendis quaerat, quasi sequi similique tempore voluptas."
-//   },
-//   {
-//     id: 5,
-//     title: "Java",
-//     content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. A impedit ipsa quae tenetur totam. Ad architecto asperiores culpa cupiditate doloremque, dolores minima numquam perferendis quaerat, quasi sequi similique tempore voluptas."
-//   },
-//   {
-//     id: 6,
-//     title: "Go",
-//     content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. A impedit ipsa quae tenetur totam. Ad architecto asperiores culpa cupiditate doloremque, dolores minima numquam perferendis quaerat, quasi sequi similique tempore voluptas."
-//   },
-// ];
+function Home(): JSX.Element {
 
-
-class Home extends React.Component<any, any>{
-
-  state = {
-    data: []
-  }
+  const[data, setData] = useState<Data[]>([]);
 
   /**
    * fetch article data
    */
-  fetchData = (): void => {
+  const fetchData = (): void => {
     // fetch('https://jsonplaceholder.typicode.com/posts')
     //     .then(response => response.json())
     //     .then(result => {
@@ -71,11 +35,10 @@ class Home extends React.Component<any, any>{
       })
   }
 
-  componentDidMount(): void {
-    this.fetchData();
-  }
+  // componentDidMount(): void {
+  //   this.fetchData();
+  // }
 
-  render(): React.ReactElement<any, string | React.JSXElementConstructor<any>> | string | number | Iterable<React.ReactNode> | React.ReactPortal | boolean | any | null | undefined {
     return(
       <section>
         <div
@@ -90,7 +53,6 @@ class Home extends React.Component<any, any>{
         </div>
       </section>
     );
-  }
 
 }
 
