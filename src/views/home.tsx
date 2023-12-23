@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Card from "./../components/card/card";
 import axios from "axios";
 
@@ -28,8 +28,8 @@ function Home(): JSX.Element {
     // })
 
       axios.get('https://jsonplaceholder.typicode.com/posts').then(response => {
-          console.log(response.data);
-          this.setState({data: response.data});
+          // console.log(response.data);
+          setData(response.data);
       }).catch(err => {
           console.log(err);
       })
@@ -39,13 +39,18 @@ function Home(): JSX.Element {
   //   this.fetchData();
   // }
 
+    useEffect(() => {
+        fetchData();
+        console.log("Called");
+    }, []);
+
     return(
       <section>
         <div
           className={'grid 2xl:grid-cols-5 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 w-fit relative m-auto'}>
 
           {
-            this.state.data.map((r: Data, index: number) => {
+            data.map((r: Data, index: number) => {
               return <Card title={r.title} content={r.body}/>
             })
           }
