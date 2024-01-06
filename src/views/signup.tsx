@@ -32,8 +32,10 @@ function Signup(): JSX.Element {
 
   const validateSubmition = () => {
     // validation
-    if(true) {
+    if(fname & lname & username & email & password) {
        submitNewUser();
+    } else {
+      alert("Invalid Inputs");
     }
   }
 
