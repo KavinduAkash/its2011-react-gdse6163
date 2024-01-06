@@ -1,43 +1,109 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import Input from "./../components/input/input";
 import * as ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
+import Swal from "sweetalert2";
+import axios from "axios";
+import Cookies from 'js-cookie';
+import {useNavigate} from "react-router-dom";
 
-class Editor extends React.Component<any, any> {
+function Editor(): JSX.Element {
 
-  state = {
-    value: ""
-  }
+    const navigate = useNavigate();
 
-  handleEditor = (html): void => {
-    console.log(html);
-    this.setState({value: html})
-  }
+    const [title, setTitle] = useState<string>("");
+    const [description, setDescription] = useState<string>("");
 
-  render(): React.ReactElement<any, string | React.JSXElementConstructor<any>> | string | number | Iterable<React.ReactNode> | React.ReactPortal | boolean | any | null | undefined {
-    return(
-      <section className={'px-28'}>
+    useEffect(()=>{
+        //get token
+        const ACCESS_TOKEN = Cookies.get("token");
+        //check token -> redirect
+        if(!ACCESS_TOKEN) {
+            navigate("/signin");
+        }
+    }, []);
 
-        <div className={'text-right mt-5'}>
-          <button className={'second-btn mr-1'}>Clear</button>
-          <button className={'main-btn ml-1'}>Publish</button>
-        </div>
+    const handleTitle = (e:any, type:string) => {
+        setTitle(e.target.value);
+    }
 
-        <Input
-          type={'text'}
-          name={'title'}
-          label={'Title'}
-          placeholder={'Enter the title'}
-          optional={false}/>
+    const handleEditor = (html): void => {
+        console.log(html);
+        setDescription(html)
+    }
 
-          <div className={'m-2'}>
-            <ReactQuill theme="snow" value={this.state.value} onChange={this.handleEditor} />
-          </div>
+    const validateSubmission = () => {
 
-      </section>
+        console.log(title)
+        console.log(description)
+
+        if(title && description) {
+            submitArticle();
+        } else {
+            Swal.fire({
+                icon: "error",
+                title: "Invalid Inputs",
+                text: "Please enter valid inputs"
+            });
+        }
+    }
+
+    const submitArticle = () => {
+
+        const ACCESS_TOKEN = Cookies.get("token");
+
+        console.log('tkn: ', ACCESS_TOKEN);
+
+        const headers = {
+            'Content-Type': 'application/json',
+            'Authorization': ACCESS_TOKEN
+        }
+
+        let body = {
+            title: title,
+            description: description
+        }
+
+        axios.post("http://localhost:8081/article", body, {headers: headers})
+            .then(r => {
+                Swal.fire({
+                    icon: "success",
+                    title: "Success!",
+                    text: "Article created successfully!"
+                });
+            })
+            .catch(e => {
+                Swal.fire({
+                    icon: "error",
+                    title: "Sorry!",
+                    text: "Something went wrong"
+                });
+            })
+    }
+
+    return (
+        <section className={'px-28'}>
+
+            <div className={'text-right mt-5'}>
+                <button className={'second-btn mr-1'}>Clear</button>
+                <button className={'main-btn ml-1'} onClick={validateSubmission}>Publish</button>
+            </div>
+
+            <Input
+                type={'text'}
+                name={'title'}
+                label={'Title'}
+                placeholder={'Enter the title'}
+                optional={false}
+                callBack={handleTitle}
+            />
+
+            <div className={'m-2'}>
+                <ReactQuill theme="snow" value={description} onChange={handleEditor}/>
+            </div>
+
+        </section>
     );
-  }
-
 }
 
 export default Editor;

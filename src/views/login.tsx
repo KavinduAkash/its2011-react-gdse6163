@@ -5,6 +5,7 @@ import * as validator from '../util/validator';
 import axios from "axios";
 import Swal from "sweetalert2";
 import {useNavigate} from "react-router-dom";
+import Cookies from 'js-cookie'; // npm i js-cookies , npm i -D @types/js-cookies
 
 interface State {
   email: string,
@@ -60,7 +61,11 @@ function Login(): JSX.Element {
       }
       axios.post("http://localhost:8081/user/auth", body, {headers: headers})
           .then(r => {
+
+              Cookies.set("token", r.data.data.accessToken);
+              Cookies.set("user", JSON.stringify(r.data.data.user)); // JSON.parse("")
               navigate("/");
+
           })
           .catch(e => {
             Swal.fire({

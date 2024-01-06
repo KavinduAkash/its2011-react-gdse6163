@@ -27,7 +27,7 @@ function Home(): JSX.Element {
     //   console.log(err);
     // })
 
-      axios.get('http://localhost:8081/article?size=10&page=1').then(response => {
+      axios.get('http://localhost:8081/article?size=100&page=1').then(response => {
           // console.log(response.data.data);
           setData(response.data.data);
       }).catch(err => {
