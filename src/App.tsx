@@ -26,8 +26,8 @@ class App extends React.Component<Props, State> {
         <BrowserRouter>
           <Header/>
           <Routes>
-            <Route path={"/"} element={<Component1/>}/>
-            {/*<Route path={"/"} element={<Home/>}/>*/}
+            {/*<Route path={"/"} element={<Component1/>}/>*/}
+            <Route path={"/"} element={<Home/>}/>
             <Route path={"/signin"} element={<Login/>}/>
             <Route path={"/signup"} element={<Signup/>}/>
             <Route path={"/editor"} element={<Editor/>}/>

@@ -1,3 +1,4 @@
+import {useLocation} from "react-router-dom";
 
 const article = "<h1>Welcome to typescript</h1>\n" +
     "                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus assumenda consequuntur eius eum excepturi fuga, hic illo magnam nesciunt placeat sed sequi soluta sunt. Ad at excepturi itaque nemo sed!</p>\n" +
@@ -10,6 +11,13 @@ const article = "<h1>Welcome to typescript</h1>\n" +
     "                </ol>";
 
 function Article(): JSX.Element {
+
+    const location = useLocation();
+    const title:any = location.state.title;
+    const description:any = location.state.description;
+
+    console.log(description)
+
     return(
         <section className={'my-5 mx-5 min-h-[70vh]'}>
 
@@ -19,15 +27,9 @@ function Article(): JSX.Element {
             {/*content*/}
             <div className={'mt-5 no-more-tailwind'}>
 
-                <h1>Welcome to typescript</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus assumenda consequuntur eius eum excepturi fuga, hic illo magnam nesciunt placeat sed sequi soluta sunt. Ad at excepturi itaque nemo sed!</p>
-
-                <ol>
-                    <li>java</li>
-                    <li>javascript</li>
-                    <li>Perl</li>
-                    <li>Go</li>
-                </ol>
+                {
+                    description
+                }
 
             </div>
 

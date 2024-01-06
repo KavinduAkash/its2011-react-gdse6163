@@ -5,7 +5,7 @@ import axios from "axios";
 interface Data {
   id: number,
   title: string,
-  body: string
+  description: string
 }
 
 function Home(): JSX.Element {
@@ -27,9 +27,9 @@ function Home(): JSX.Element {
     //   console.log(err);
     // })
 
-      axios.get('https://jsonplaceholder.typicode.com/posts').then(response => {
-          // console.log(response.data);
-          setData(response.data);
+      axios.get('http://localhost:8081/article?size=10&page=1').then(response => {
+          // console.log(response.data.data);
+          setData(response.data.data);
       }).catch(err => {
           console.log(err);
       })
@@ -51,7 +51,7 @@ function Home(): JSX.Element {
 
           {
             data.map((r: Data, index: number) => {
-              return <Card title={r.title} content={r.body}/>
+              return <Card title={r.title} content={r.description}/>
             })
           }
 

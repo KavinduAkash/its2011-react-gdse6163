@@ -1,7 +1,46 @@
 import { Link } from "react-router-dom";
 import Input from "./../components/input/input";
+import {useState} from "react";
 
 function Signup(): JSX.Element {
+
+  const [fname, setFname] = useState<string>("");
+  const [lname, setLname] = useState<string>("");
+  const [username, setUsername] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+
+  const handleInputs = (e: any, type: string) => {
+    switch (type) {
+      case fname:
+        setFname(e.target.value);
+        break;
+      case lname:
+        setLname(e.target.value);
+        break;
+      case username:
+        setFname(e.target.value);
+        break;
+      case email:
+        setEmail(e.target.value);
+        break;
+      case password:
+        setPassword(e.target.value);
+        break;
+    }
+  }
+
+  const validateSubmition = () => {
+    // validation
+    if(true) {
+       submitNewUser();
+    }
+  }
+
+  const submitNewUser = () => {
+
+  }
+
     return(
       <section className={'flex justify-center items-center p-5'}>
         <div className={'w-fit p-10 border shadow-xl rounded-xl'}>
@@ -21,14 +60,18 @@ function Signup(): JSX.Element {
                 name={'fname'}
                 label={'First Name'}
                 placeholder={'Enter your first name'}
-                optional={false}/>
+                optional={false}
+                callBack={handleInputs}
+              />
 
               <Input
                 type={'text'}
                 name={'lname'}
                 label={'Last Name'}
                 placeholder={'Enter your last name'}
-                optional={false}/>
+                optional={false}
+                callBack={handleInputs}
+              />
 
             </div>
 
@@ -37,25 +80,31 @@ function Signup(): JSX.Element {
               name={'username'}
               label={'Username'}
               placeholder={'Enter your username'}
-              optional={false}/>
+              optional={false}
+              callBack={handleInputs}
+            />
 
             <Input
               type={'email'}
               name={'email'}
               label={'Email'}
               placeholder={'Enter your email'}
-              optional={false}/>
+              optional={false}
+              callBack={handleInputs}
+            />
 
             <Input
               type={'password'}
               name={'password'}
               label={'Password'}
               placeholder={'Enter your password'}
-              optional={false}/>
+              optional={false}
+              callBack={handleInputs}
+            />
           </div>
 
           <div className={'text-center mt-5'}>
-            <button className={'main-btn'}>Sign Up</button>
+            <button className={'main-btn'} onClick={validateSubmition}>Sign Up</button>
           </div>
 
           <div className={'text-center mt-5'}>
