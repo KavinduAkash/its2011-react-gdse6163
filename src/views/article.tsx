@@ -22,14 +22,12 @@ function Article(): JSX.Element {
         <section className={'my-5 mx-5 min-h-[70vh]'}>
 
             {/*title*/}
-            <div className={'text-4xl font-bold text-center'}>Title</div>
+            <div className={'text-4xl font-bold text-center'}>{title}</div>
 
             {/*content*/}
             <div className={'mt-5 no-more-tailwind'}>
 
-                {
-                    description
-                }
+                <div dangerouslySetInnerHTML={{__html: description}}></div>
 
             </div>
 
