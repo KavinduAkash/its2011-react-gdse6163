@@ -52,8 +52,6 @@ function Editor(): JSX.Element {
 
         const ACCESS_TOKEN = Cookies.get("token");
 
-        console.log('tkn: ', ACCESS_TOKEN);
-
         const headers = {
             'Content-Type': 'application/json',
             'Authorization': ACCESS_TOKEN
