@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
 import Input from "./../components/input/input";
 import * as validator from '../util/validator';
+import axios from "axios";
+import Swal from "sweetalert2";
 
 interface State {
   email: string,
@@ -52,6 +54,23 @@ function Login(): JSX.Element {
 
     if(isValidInputs) {
       // send data to backend
+      const headers = {'Content-Type': 'application/json'}
+      let body = {
+        email: email,
+        password: password
+      }
+      axios.post("http://localhost:8081/user/auth", body, {headers: headers})
+          .then(r => {
+
+          })
+          .catch(e => {
+            Swal.fire({
+              icon: "error",
+              title: "Sorry!",
+              text: "Something went wrong"
+            });
+          })
+
     } else {
       // this.setState({...this.state, errorMsg: errorMsg});
       setErrorMsg(errorMsg);

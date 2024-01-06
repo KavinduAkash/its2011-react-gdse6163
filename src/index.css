@@ -16,6 +16,10 @@
     min-height: 500px;
 }
 
+.swal2-confirm {
+    background: lightseagreen!important;
+}
+
 /* No More Tailwind CSS V1.0.1 Jan 2023 */
 .no-more-tailwind a:link {
     color: blue;

@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import Input from "./../components/input/input";
 import {useState} from "react";
+import Swal from 'sweetalert2'
+import axios from "axios";
 
 function Signup(): JSX.Element {
 
@@ -12,19 +14,19 @@ function Signup(): JSX.Element {
 
   const handleInputs = (e: any, type: string) => {
     switch (type) {
-      case fname:
+      case 'fname':
         setFname(e.target.value);
         break;
-      case lname:
+      case 'lname':
         setLname(e.target.value);
         break;
-      case username:
-        setFname(e.target.value);
+      case 'username':
+        setUsername(e.target.value);
         break;
-      case email:
+      case 'email':
         setEmail(e.target.value);
         break;
-      case password:
+      case 'password':
         setPassword(e.target.value);
         break;
     }
@@ -32,15 +34,42 @@ function Signup(): JSX.Element {
 
   const validateSubmition = () => {
     // validation
-    if(fname & lname & username & email & password) {
+    if(fname && lname && username && email && password) {
        submitNewUser();
     } else {
-      alert("Invalid Inputs");
+      Swal.fire({
+        icon: "error",
+        title: "Invalid Inputs",
+        text: "Please enter valid inputs"
+      });
     }
   }
 
   const submitNewUser = () => {
 
+    const headers = {'Content-Type': 'application/json'}
+
+    let body = {
+        username: username,
+        fname: fname,
+        lname: lname,
+        email: email,
+        password: password
+    }
+
+    axios.post("http://localhost:8081/user", body, {headers: headers}).then(r => {
+      Swal.fire({
+        icon: "success",
+        title: "Success!",
+        text: "User saved successfully!"
+      });
+    }).catch(err => {
+      Swal.fire({
+        icon: "error",
+        title: "Sorry!",
+        text: "Something went wrong"
+      });
+    })
   }
 
     return(
