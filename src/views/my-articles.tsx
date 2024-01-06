@@ -99,36 +99,39 @@ const MyArticles = (): JSX.Element => {
     <section>
       <div className={'my-5 mx-20'}>
 
-        <table>
+        {
+          data.length===0 ? <h1 className={'text-2xl text-center'}>Records not found</h1> :
+              <table>
 
-          <thead className={'bg-gray-100'}>
-            <tr>
-              <th className={'py-5'}>Date</th>
-              <th className={'py-5'}>Title</th>
-              <th className={'py-5'}>Actions</th>
-            </tr>
-          </thead>
+                <thead className={'bg-gray-100'}>
+                <tr>
+                  <th className={'py-5'}>Date</th>
+                  <th className={'py-5'}>Title</th>
+                  <th className={'py-5'}>Actions</th>
+                </tr>
+                </thead>
 
-          <tbody>
-          {
-            data.map((r: Data, index: number) => {
-              return <tr className={'border-b'}>
-                <td className={'w-[15%]'}>{ DateHanlder.formatDate(r.publishedDate) }</td>
-                <td className={'w-[50%]'}>{r.title}</td>
-                {/*<td className={'w-[50%]'}>{r.content}</td>*/}
-                <td className={'w-[15%]'}>
+                <tbody>
+                {
+                  data.map((r: Data, index: number) => {
+                    return <tr className={'border-b'}>
+                      <td className={'w-[15%]'}>{ DateHanlder.formatDate(r.publishedDate) }</td>
+                      <td className={'w-[50%]'}>{r.title}</td>
+                      {/*<td className={'w-[50%]'}>{r.content}</td>*/}
+                      <td className={'w-[15%]'}>
 
-                  <button className={'bg-blue-600 text-white p-3 rounded-full mx-2'}><FaEye /></button>
-                  <button className={'bg-green-600 text-white p-3 rounded-full mx-2'}><FaPen /></button>
-                  <button className={'bg-red-600 text-white p-3 rounded-full mx-2'} onClick={() => deleteArticle(r)}><FaTrash /></button>
+                        <button className={'bg-blue-600 text-white p-3 rounded-full mx-2'}><FaEye /></button>
+                        <button className={'bg-green-600 text-white p-3 rounded-full mx-2'}><FaPen /></button>
+                        <button className={'bg-red-600 text-white p-3 rounded-full mx-2'} onClick={() => deleteArticle(r)}><FaTrash /></button>
 
-                </td>
-              </tr>
-            })
-          }
-          </tbody>
+                      </td>
+                    </tr>
+                  })
+                }
+                </tbody>
 
-        </table>
+              </table>
+        }
 
       </div>
     </section>
