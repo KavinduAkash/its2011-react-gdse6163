@@ -4,6 +4,7 @@ import Input from "./../components/input/input";
 import * as validator from '../util/validator';
 import axios from "axios";
 import Swal from "sweetalert2";
+import {useNavigate} from "react-router-dom";
 
 interface State {
   email: string,
@@ -13,11 +14,7 @@ interface State {
 
 function Login(): JSX.Element {
 
-  // state = {
-  //   email: '',
-  //   password: '',
-  //   errorMsg: ''
-  // }
+  const navigate = useNavigate();
 
   const[email, setEmail] = useState('');
   const[password, setPassword] = useState('');
@@ -46,6 +43,8 @@ function Login(): JSX.Element {
       errorMsg = "> Invalid Email";
     }
 
+    console.log(password)
+
     if(!validator.validatePassword(password)) {
       // error
       isValidInputs = false;
@@ -61,9 +60,7 @@ function Login(): JSX.Element {
       }
       axios.post("http://localhost:8081/user/auth", body, {headers: headers})
           .then(r => {
-
-
-
+              navigate("/");
           })
           .catch(e => {
             Swal.fire({

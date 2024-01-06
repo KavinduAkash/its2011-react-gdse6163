@@ -10,5 +10,5 @@ export function validateLKMobileNumbers(mobile: string): boolean {
 }
 
 export function validatePassword(password: string): boolean {
-    return password>=8;
+    return password.length>=8;
 }
