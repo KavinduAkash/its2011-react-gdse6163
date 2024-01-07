@@ -60,27 +60,51 @@ function Editor(): JSX.Element {
             'Authorization': ACCESS_TOKEN
         }
 
-        let body = {
+        let body = article ? {
+            id: article._id,
+            title: title,
+            description: description
+        } : {
             title: title,
             description: description
         }
 
-        axios.post("http://localhost:8081/article", body, {headers: headers})
-            .then(r => {
-                Swal.fire({
-                    icon: "success",
-                    title: "Success!",
-                    text: "Article created successfully!"
-                });
-                navigate('/my-articles');
-            })
-            .catch(e => {
-                Swal.fire({
-                    icon: "error",
-                    title: "Sorry!",
-                    text: "Something went wrong"
-                });
-            })
+        if(article) {
+            axios.put("http://localhost:8081/article", body, {headers: headers})
+                .then(r => {
+                    Swal.fire({
+                        icon: "success",
+                        title: "Success!",
+                        text: "Article updated successfully!"
+                    });
+                    navigate('/my-articles');
+                })
+                .catch(e => {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Sorry!",
+                        text: "Something went wrong"
+                    });
+                })
+        } else {
+            axios.post("http://localhost:8081/article", body, {headers: headers})
+                .then(r => {
+                    Swal.fire({
+                        icon: "success",
+                        title: "Success!",
+                        text: "Article created successfully!"
+                    });
+                    navigate('/my-articles');
+                })
+                .catch(e => {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Sorry!",
+                        text: "Something went wrong"
+                    });
+                })
+        }
+
     }
 
     return (
@@ -98,6 +122,7 @@ function Editor(): JSX.Element {
                 placeholder={'Enter the title'}
                 optional={false}
                 callBack={handleTitle}
+                value={title}
             />
 
             <div className={'m-2'}>

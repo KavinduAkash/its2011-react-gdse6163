@@ -6,7 +6,8 @@ interface Props {
   placeholder?: string,
   label: string,
   optional: boolean,
-  callBack: Function
+  callBack: Function,
+  value?: string
 }
 
 class Input extends React.Component<Props, any> {
@@ -25,6 +26,7 @@ class Input extends React.Component<Props, any> {
             placeholder={this.props.placeholder}
             className={'block border border-green-300 outline-none focus:border-green-600 h-10 w-full'}
             onChange={e => this.props.callBack(e, this.props.name)}
+            value={this.props.value}
         />
       </div>
     );
